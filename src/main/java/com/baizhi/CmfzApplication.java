@@ -1,4 +1,4 @@
-package com.baizhi.cmfz;
+package com.baizhi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
