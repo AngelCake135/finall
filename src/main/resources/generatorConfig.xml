@@ -43,7 +43,7 @@
         </javaClientGenerator>
         
         <!-- 要生成哪些表 -->
-        <table tableName="menu" domainObjectName="Menu"
+        <table tableName="banner" domainObjectName="Banner"
             enableCountByExample="true" enableUpdateByExample="true"
             enableDeleteByExample="true" enableSelectByExample="true"
             selectByExampleQueryId="true"></table>

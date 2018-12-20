@@ -2,6 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.baizhi.mapper.MenuMapper" >
 
+    <resultMap id="res" type="com.baizhi.entity.Menu">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="iconcls" property="iconcls"></result>
+        <result column="url" property="url"></result>
+        <result column="parent_id" property="parentId"></result>
+        <collection property="cmenu" ofType="com.baizhi.entity.Menu">
+            <id column="mmid" property="id"></id>
+            <result column="mmtitle" property="title"></result>
+            <result column="mmiconcls" property="iconcls"></result>
+            <result column="mmurl" property="url"></result>
+            <result column="mmparent_id" property="parentId"></result>
+        </collection>
+    </resultMap>
+
+    <select id="queryAllMenu" resultMap="res">
+
+        select m.id,m.title,m.iconcls,m.url,m.parent_id,
+        mm.id mmid,mm.title mmtitle,mm.iconcls mmiconcls,mm.url mmurl,mm.parent_id mmparent_id
+        from menu m join menu mm on m.id=mm.parent_id
+
+    </select>
 
 
 </mapper>
