@@ -6,25 +6,24 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
-
+import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Menu implements Serializable {
+public class Banner implements Serializable {
 
     @Id
     private Integer id;
 
     private String title;
 
-    private String iconcls;
+    private String imgPath;
 
-    private String url;
+    private Date pubDate;
 
-    private Integer parentId;
+    private String description;
 
-    private List<Menu> cmenu;
+    private String status;
 
 
 }
