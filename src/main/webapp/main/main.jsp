@@ -17,16 +17,26 @@
 <body class="easyui-layout">   
     <div data-options="region:'north',split:true" style="height:60px;background-color:  #5C160C">
     	<div style="font-size: 24px;color: #FAF7F7;font-family: 楷体;font-weight: 900;width: 500px;float:left;padding-left: 20px;padding-top: 10px" >持名法州后台管理系统</div>
-    	<div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:xxxxx &nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a></div>
+    	<div style="font-size: 16px;color: #FAF7F7;font-family: 楷体;width: 300px;float:right;padding-top:15px">欢迎您:${sessionScope.phone}&nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">修改密码</a>&nbsp;&nbsp;<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-01'">退出系统</a></div>
     </div>   
     <div data-options="region:'south',split:true" style="height: 40px;background: #5C160C">
     	<div style="text-align: center;font-size:15px; color: #FAF7F7;font-family: 楷体" >&copy;百知教育 htf@zparkhr.com.cn</div>
     </div>   
        
     <div data-options="region:'west',title:'导航菜单',split:true" style="width:220px;">
-    	<div id="aa" class="easyui-accordion" data-options="fit:true">
-    		
-		</div>  
+        <div id="aa" class="easyui-accordion" style="width:300px;height:200px;">
+            <div title="Title1" data-options="iconCls:'icon-save'" style="overflow:auto;padding:10px;">
+                <h3 style="color:#0099FF;">Accordion for jQuery</h3>
+                <p>Accordion is a part of easyui framework for jQuery.
+                    It lets you define your accordion component on web page more easily.</p>
+            </div>
+            <div title="Title2" data-options="iconCls:'icon-reload',selected:true" style="padding:10px;">
+                content2
+            </div>
+            <div title="Title3">
+                content3
+            </div>
+        </div>
     </div>   
     <div data-options="region:'center'">
     	<div id="tt" class="easyui-tabs" data-options="fit:true,narrow:true,pill:true">   

@@ -1,30 +1,9 @@
 package com.baizhi.mapper;
 
 import com.baizhi.entity.User;
-import com.baizhi.entity.UserExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
-public interface UserMapper {
-    int countByExample(UserExample example);
+import tk.mybatis.mapper.common.Mapper;
 
-    int deleteByExample(UserExample example);
+public interface UserMapper extends Mapper<User> {
 
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    List<User> selectByExample(UserExample example);
-
-    User selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByPrimaryKeySelective(User record);
-
-    int updateByPrimaryKey(User record);
 }
