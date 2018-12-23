@@ -64,6 +64,26 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.54</version>
         </dependency>
+        <!-- 集成mybatis分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+        <!-- 处理音频 -->
+        <dependency>
+            <groupId>org</groupId>
+            <artifactId>jaudiotagger</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.clojars.automata/jl -->
+        <dependency>
+            <groupId>org.clojars.automata</groupId>
+            <artifactId>jl</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
 
 
         <dependency>

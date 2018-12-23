@@ -33,7 +33,7 @@
                             msg : "添加成功"
                         });
                         $("#addBannerDialog").dialog("close");
-                        $("#BannerTable").datagrid("load");
+                        $("#dg").datagrid("load");
                         $.parser.parse();
                     }
                 });

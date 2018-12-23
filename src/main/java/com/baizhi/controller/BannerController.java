@@ -3,6 +3,7 @@ package com.baizhi.controller;
 import com.baizhi.dto.BannerPageDto;
 import com.baizhi.entity.Banner;
 import com.baizhi.service.BannerService;
+import com.baizhi.util.AddFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,9 @@ public class BannerController {
 
     @Autowired
     private BannerService bannerService;
+
+    @Autowired
+    private AddFile addFile;
 
     @RequestMapping("/queryAllBanner")
     public BannerPageDto queryAllBanner(Integer page, Integer rows){
@@ -47,7 +51,9 @@ public class BannerController {
         ServletContext context = session.getServletContext();
         String realPath = context.getRealPath("/img/shouye");
 
-        long time = new Date().getTime();
+        String pathString = addFile.addFile(realPath, file1);
+        banner.setImgPath("/img/shouye/"+pathString);
+      /*  long time = new Date().getTime();
         String pathString=time+file1.getOriginalFilename();
         //创建目标文件
         File file2 = new File(realPath+"/"+pathString);
@@ -56,8 +62,8 @@ public class BannerController {
         System.out.println("-----------------------");
         System.out.println(realPath);
         System.out.println(pathString);
-        banner.setImgPath("/img/shouye/"+pathString);
 
+*/
         bannerService.addBanner(banner);
 
 
