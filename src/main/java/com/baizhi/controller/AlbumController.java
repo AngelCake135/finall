@@ -52,7 +52,7 @@ public class AlbumController {
     @RequestMapping("/addAlbum")
     public void addAlbum(Album album, MultipartFile file1, HttpSession session) throws IOException {
 
-        System.out.println("-------------------添加专辑"+album);
+        System.out.println("-------------------添加专辑");
 
         ServletContext context = session.getServletContext();
         String realPath = context.getRealPath("/img/cover_img");
@@ -60,6 +60,8 @@ public class AlbumController {
         String filename= addFile.addFile(realPath, file1);
 
         album.setCoverImg("/img/cover_img"+filename);
+
+        System.out.println(album);
 
         albumService.addAlbum(album);
     }
@@ -71,6 +73,11 @@ public class AlbumController {
         Album one = albumService.queryOne(album);
 
         return one;
+    }
+
+    @RequestMapping("/deleteAlbum")
+    public void deleteAlbum(Album album){
+            albumService.deleteAlbum(album);
     }
 
     @RequestMapping("downLoadChapter")
@@ -146,7 +153,7 @@ public class AlbumController {
 
         file1.transferTo(file2);
 
-        chapterService.addChapter(chapter);
+
 
         MP3File mp3File = (MP3File) AudioFileIO.read(file2);
         MP3AudioHeader audioHeader = (MP3AudioHeader) mp3File.getAudioHeader();
@@ -175,6 +182,8 @@ public class AlbumController {
         chapter.setDuration(parse);
 
         long size = file1.getSize();
+        System.out.println("=============");
+        System.out.println(size);
 
         double mb=0;
             mb=size/(1024*1024*1.0);
@@ -182,9 +191,15 @@ public class AlbumController {
 
         System.out.println("================================");
         System.out.println(chapter);
-
+        chapterService.addChapter(chapter);
        // chapterService.addChapter(chapter);
 
 
+    }
+
+    @RequestMapping("/deleteChapter")
+    public void deleteChapter(Chapter chapter){
+
+        chapterService.deleteChapter(chapter);
     }
 }

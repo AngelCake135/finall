@@ -45,4 +45,9 @@ public class AlbumServiceImpl implements AlbumService {
 
         return one;
     }
+
+    @Override
+    public void deleteAlbum(Album album) {
+        albumMapper.deleteByPrimaryKey(album);
+    }
 }

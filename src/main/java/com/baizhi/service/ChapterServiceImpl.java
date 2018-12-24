@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.lang.reflect.Field;
 import java.util.UUID;
 
 @Service
@@ -28,6 +30,19 @@ public class ChapterServiceImpl implements ChapterService {
         String uuid = UUID.randomUUID().toString();
         chapter.setId(uuid);
         chapterMapper.insert(chapter);
+
+    }
+
+    @Override
+    public void deleteChapter(Chapter chapter) {
+
+        Chapter one = chapterMapper.selectOne(chapter);
+
+
+        chapterMapper.deleteByPrimaryKey(chapter);
+        File file = new File(one.getUrl());
+        file.delete();
+
 
     }
 }

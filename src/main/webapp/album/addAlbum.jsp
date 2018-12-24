@@ -41,12 +41,12 @@
                     onSubmit:function() {
                         return $("#addAlbumForm").form("validate");
                     },
-                    success:function(value) {
+                    success:function() {
                         $.messager.show({
                             title : "添加",
                             msg : "添加成功"
                         });
-                        $("#addAlbumDialog").dialog("close");
+                        $("#AlbumDialog").dialog("close");
                         $("#albumDg").treegrid("load");
                         $.parser.parse();
                     }

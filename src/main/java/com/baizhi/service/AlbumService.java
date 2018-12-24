@@ -12,5 +12,7 @@ public interface AlbumService {
 
     public Album queryOne(Album album);
 
+    public void deleteAlbum(Album album);
+
 
 }

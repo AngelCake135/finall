@@ -8,7 +8,7 @@
                 iconCls: "icon-add",
                 text:"添加专辑",
                 handler: function(){
-                    $("#addChapterDg").dialog({
+                    $("#AlbumDialog").dialog({
                         title:"录入专辑信息",
                         modal:false,
                         width:300,
@@ -24,17 +24,32 @@
                     //获取选中行
                     var row = $("#albumDg").edatagrid("getSelected");
                     if (row != null) {
-                        $.messager.confirm("确定","你确定要删除这条数据吗？",function(r){
-                            if(r){
-                                $.post(
-                                    "${pageContext.request.contextPath}/banner/deleteBanner",
-                                    "id="+row.id,
-                                    function(result){
-                                        $("#dg").edatagrid("reload");
-                                    }
-                                );
-                            }
-                        });
+                     if(row.author!=null){
+                         $.messager.confirm("确定","你确定要删除这个专辑吗？",function(r){
+                             if(r){
+                                 $.post(
+                                     "${pageContext.request.contextPath}/album/deleteAlbum",
+                                     "id="+row.id,
+                                     function(){
+                                         $("#albumDg").treegrid("reload");
+
+                                     }
+                                 );
+                             }
+                         });
+                     }else{
+                         $.messager.confirm("确定","你确定要删除这个音频吗？",function(r){
+                             if(r){
+                                 $.post(
+                                     "${pageContext.request.contextPath}/album/deleteChapter",
+                                     "id="+row.id,
+                                     function(){
+                                         $("#albumDg").treegrid("reload");
+                                     }
+                                 );
+                             }
+                         });
+                     }
                     } else {
                         $.messager.alert("友情提醒","请先选择需要删除的行");
                     }
@@ -65,7 +80,7 @@
                     var row = $("#albumDg").treegrid("getSelected");
                     if(row!=null){
                         if(row.author!=null){
-                            $("#AlbumDialog").dialog({
+                            $("#AlbumDg").dialog({
                                 title:"商品详情",
                                 modal:false,
                                 width:300,
@@ -123,7 +138,7 @@
                 animate:true,
                 columns:[[
                     {field:"title",title:"标题",width:80},
-                    {field:"url",title:"下载路径",formatter: function(value,row,index){
+                    {field:"url",title:"音频",formatter: function(value,row,index){
                         if(row.url){
                             return '<audio src=\"${pageContext.request.contextPath}'+row.url+'\" controls="controls"> </audio >';
 
@@ -131,6 +146,7 @@
                         }
                         ,width:100},
                     {field:"size",title:"章节大小",width:80},
+
                     {field:"duration",title:"章节时长",width:80}
                 ]],
                 fitColumns:true,
@@ -151,3 +167,5 @@
 <div id="addChapterDg"></div>
 
 <div id="AlbumDialog" ></div>
+
+<div id="AlbumDg"></div>
